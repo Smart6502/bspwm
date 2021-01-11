@@ -3,22 +3,32 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x gnome-keyring-daemon > /dev/null || gnome-keyring-daemon &
 sh ~/.fehbg
-picom &
+pgrep -x picom > /dev/null || picom &
+pgrep -x flameshot > /dev/null || flameshot &
 pgrep -x nm-applet > /dev/null || nm-applet &
 pgrep -x polybar > /dev/null || /bin/sh -c ~/.config/polybar/launch.sh
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
-bspc config border_width        4
-bspc config window_gap          20
+# Appearance
+bspc config border_width        3
+bspc config window_gap          10
+bspc config top_padding		30
+bspc config bottom_padding	0
+bspc config left_padding	0
+bspc config right_padding	0
+bspc config split_ratio		0.50
+bspc config borderless_monocle  true
+bspc config gapless_monocle     true
+bspc config automatic_scheme 	alternate
+# Resize SCHEMA
+bspc config pointer_modifier shift
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner
 
-bspc config split_ratio          0.52
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
+# Rules
+bspc rule -a 'Brave-browser' border=off
+bspc rule -a 'discord' border=off
 
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a zoom state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
+

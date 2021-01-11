@@ -30,7 +30,7 @@ alert = #bd2c40
 [bar/bbar]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 27
+height = 30
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 6.0
@@ -57,16 +57,16 @@ font-0 = fixed:pixelsize=11;1
 font-1 = MesloLGS NF:style=Regular:size=16;1
 font-2 = MaterialIcons:size=13;-1
 
-modules-left = disticon bspwm
+modules-left = launchicon bspwm
 modules-center = xwindow
-modules-right = xkeyboard cpu memory wlan battery temperature date powermenu
+modules-right = cpu memory battery date powermenu
 
 tray-position = right
 tray-padding = 2
 ;tray-background = #0D182C
 
 ;wm-restack = bspwm
-;wm-restack = i3
+wm-restack = i3
 
 ;override-redirect = true
 
@@ -81,7 +81,7 @@ cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+label = %title:0:20:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -95,8 +95,8 @@ label-layout = %layout%
 
 label-indicator-padding = 2
 label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+label-indicator-background = "#5E81AC"
+label-indicator-underline = "#5E81AC"
 
 [module/filesystem]
 type = internal/fs
@@ -119,9 +119,9 @@ ws-icon-4 = 5;
 
 ws-icon-default = 
 
-label-focused = %icon% 
+label-focused = %icon%
 ;label-focused-foreground = "#EBB56D"
-label-focused-foreground = ${env:Wco:#EBB56D}
+label-focused-foreground = "#AF00D7"
 label-focused-padding = 6
 
 label-occupied = %icon%
@@ -216,15 +216,15 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = "   "
+format-prefix-foreground = ${colors.foreground}
 label = %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "  "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = "   "
+format-prefix-foreground = ${colors.foreground}
 
 label = %percentage_used%%
 
@@ -346,24 +346,24 @@ format-charging = <animation-charging> <label-charging>
 
 format-discharging = <animation-discharging> <label-discharging>
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix = "   "
+format-full-prefix-foreground = ${colors.foreground}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-foreground = ${colors.foreground}
 
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-foreground = ${colors.foreground}
 animation-charging-framerate = 750
 
 animation-discharging-0 = 
 animation-discharging-1 = 
 animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-foreground = ${colors.foreground}
 animation-discharging-framerate = 750
 
 [module/temperature]
@@ -383,40 +383,17 @@ ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
-[module/disticon]
+[module/launchicon]
 type = custom/text
 content = " " 
 content-foreground = #1793D1
+click-left = sh ~/bin/rofil
 
 [module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-; label-open =  Power
-label-open = "  "
-label-open-foreground = ${colors.secondary}
-label-close =   Cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = Reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = Power Off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = Cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = Reboot
-menu-1-1-exec = reboot
-
-menu-2-0 = power off
-menu-2-0-exec = poweroff
-menu-2-1 = Cancel
-menu-2-1-exec = menu-open-0
+type = custom/text
+content = " "
+content-foreground = ${colors.secondary}
+click-left = sh ~/bin/powermenu
 
 [settings]
 screenchange-reload = true
@@ -428,6 +405,6 @@ pseudo-transparency = false
 
 [global/wm]
 margin-top = 5
-margin-bottom = 5
+margin-bottom = 2
 
 ; vim:ft=dosini
