@@ -25,7 +25,7 @@ foreground = ${colors.fg}
 
 include-file = $HOME/.config/polybar/fonts.ini
 
-modules-left = margin round-left date round-right margin round-left layout temperature round-right
+modules-left = margin round-left date round-right margin margin round-left layout temperature round-right
 modules-center = round-left bspwm round-right
 modules-right =  round-left wlan round-right margin round-left memory cpu battery round-right margin round-left-red session round-right-red margin round-right-dark
 
